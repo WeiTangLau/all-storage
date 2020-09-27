@@ -13,7 +13,7 @@ describe('GET APIs', function () {
     let app
 
     before(function () {
-        app = require('../index')
+        app = require('../server')
 
         let val1 = 'this is a sample string'
         let val2 = 'I love CS3219'
@@ -73,7 +73,7 @@ describe('POST APIs', function () {
     let app
 
     before(function () {
-        app = require('../index')
+        app = require('../server')
     })
 
     after(function () {
@@ -116,7 +116,7 @@ describe('PUT APIs', function () {
     let app
 
     before(function () {
-        app = require('../index')
+        app = require('../server')
         let val = 'this is a sample string'
 
         chai.request(app)
@@ -165,7 +165,7 @@ describe('DELETE APIs', function () {
     let app
 
     before(function () {
-        app = require('../index')
+        app = require('../server')
 
         let val1 = 'this is a sample string'
         let val2 = 'I love CS3219'
