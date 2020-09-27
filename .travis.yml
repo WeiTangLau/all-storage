@@ -1,10 +1,16 @@
 language: node_js
 node_js:
-  - 10.19.0
+- 10.19.0
 cache: npm
-
 install:
-  - npm ci
-
+- npm ci
 script:
-  - npm test
+- npm test
+deploy:
+  provider: gae
+  keyfile: all-storage-290814-7d526378603c.json
+  project: all-storage-290814
+before_install:
+- openssl aes-256-cbc -K $encrypted_15086ecf7501_key -iv $encrypted_15086ecf7501_iv
+  -in all-storage-290814-7d526378603c.json.enc -out all-storage-290814-7d526378603c.json
+  -d

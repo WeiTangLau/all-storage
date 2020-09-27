@@ -3,7 +3,7 @@
   <body>
     <h1>Welcome to Lau Wei Tang JS Backend Project</h1>
     <p>This is a simple application that stores anything you want</p>
-    <p>Ranging from your lucky numbers to your journal, this is your go to app</p>
+    <p>Ranging from your lucky numbers to your groceries, this is your go to app</p>
     <p>Here are the APIs</p>
 
     <div>
@@ -14,11 +14,11 @@
         (zero-based)
       </p>
       <p><b>POST /store/{value}</b> inserts the content at the back of the array</p>
-      <p><b>POST /store/{index}/{value}</b> inserts the content at the specified index</p>
+      <p><b>POST /store/{index}/{value}</b> inserts the content at the specified index (zero-based)</p>
       <p><b>PUT /store/{value}</b> replaces the content at the back</p>
       <p>
         <b>PUT /store/{index}/{value}</b> replaces the content at the specified
-        index
+        index (zero-based)
       </p>
       <p><b>DELETE /store/all</b> deletes all content</p>
       <p><b>DELETE /store</b> deletes the last indexed content</p>
