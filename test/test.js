@@ -1,14 +1,3 @@
-/*
-import chai from 'chai';
-import chaiHttp from 'chai-http';
-import app from '../app';
-
-// Configure chai
-chai.use(chaiHttp);
-chai.should();
-*/
-
-
 const chai = require('chai')
     , assert = chai.assert
     , expect = chai.expect
