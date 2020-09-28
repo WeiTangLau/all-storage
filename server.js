@@ -97,6 +97,10 @@ app.delete('/store/:index', (req, res) => {
         res.send(util.format('invalid zero-based index. index entered = %d, size of list = %d', index, store.length))
         return
     }
+    if (store.length == 0) {
+        res.send('The list is empty. There is nothing to delete')
+        return
+    }
     let valueToDelete = store[index]
     store.splice(index, 1)
     res.send(util.format('Deleted content: index = %d, value = %s', index, valueToDelete))
