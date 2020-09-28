@@ -32,7 +32,7 @@ app.post('/store/:index/:value', (req, res) => {
     let index = req.params.index
     if (isNaN(index)) {
         res.statusCode = 400
-        res.send(util.format('The index sent is not a number: %s', index))
+        res.send(util.format('The index sent is not a number: index = %s', index))
         return
     }
     if (index > store.length || index < 0) {
@@ -60,7 +60,7 @@ app.put('/store/:index/:value', (req, res) => {
     let index = req.params.index
     if (isNaN(index)) {
         res.statusCode = 400
-        res.send(util.format('The index sent is not a number: %s', index))
+        res.send(util.format('The index sent is not a number: index = %s', index))
         return
     }
     if (index >= store.length || index < 0) {
@@ -89,7 +89,7 @@ app.delete('/store/:index', (req, res) => {
     let index = req.params.index
     if (isNaN(index)) {
         res.statusCode = 400
-        res.send(util.format('The index sent is not a number: %s', index))
+        res.send(util.format('The index sent is not a number: index = %s', index))
         return
     }
     if (index >= store.length || index < 0) {
