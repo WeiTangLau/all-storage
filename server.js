@@ -30,18 +30,25 @@ app.post('/store/:value', (req, res) => {
 
 app.post('/store/:index/:value', (req, res) => {
     let index = req.params.index
-    let value = req.params.value
-    if (index > store.length) {
-        res.send(util.format('invalid index. index entered = %d, size of db = %d', index, store.length))
+    if (isNaN(index)) {
+        res.statusCode = 400
+        res.send(util.format('The index sent is not a number: %s', index))
         return
     }
+    if (index > store.length || index < 0) {
+        res.statusCode = 400
+        res.send(util.format('invalid index. index entered = %d, size of list = %d', index, store.length))
+        return
+    }
+    
+    let value = req.params.value
     store.splice(index, 0, value)
     res.send(util.format('Inserted content: index = %d, value = %s', index, value))
 })
 
 app.put('/store/:value', (req, res) => {
     if (store.length == 0) {
-        res.send('The list is empty')
+        res.send('The list is empty and thus nothing to be replaced')
         return
     }
     let value = req.params.value
@@ -51,11 +58,17 @@ app.put('/store/:value', (req, res) => {
 
 app.put('/store/:index/:value', (req, res) => {
     let index = req.params.index
-    let value = req.params.value
-    if (index > store.length) {
-        res.send(util.format('invalid index. index entered = %d, size of db = %d', index, store.length))
+    if (isNaN(index)) {
+        res.statusCode = 400
+        res.send(util.format('The index sent is not a number: %s', index))
         return
     }
+    if (index >= store.length || index < 0) {
+        res.statusCode = 400
+        res.send(util.format('invalid zero-based index. index entered = %d, size of list = %d', index, store.length))
+        return
+    }
+    let value = req.params.value
     store[index] = value
     res.send(util.format('Replaced content: index = %d, value = %s', index, value))
 })
@@ -74,6 +87,16 @@ app.delete('/store/all', (req, res) => {
 
 app.delete('/store/:index', (req, res) => {
     let index = req.params.index
+    if (isNaN(index)) {
+        res.statusCode = 400
+        res.send(util.format('The index sent is not a number: %s', index))
+        return
+    }
+    if (index >= store.length || index < 0) {
+        res.statusCode = 400
+        res.send(util.format('invalid zero-based index. index entered = %d, size of list = %d', index, store.length))
+        return
+    }
     let valueToDelete = store[index]
     store.splice(index, 1)
     res.send(util.format('Deleted content: index = %d, value = %s', index, valueToDelete))
