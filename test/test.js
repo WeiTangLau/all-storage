@@ -1,5 +1,5 @@
 const chai = require('chai')
-    , assert = chai.assert
+//    , assert = chai.assert
     , expect = chai.expect
     , should = chai.should
 
@@ -10,9 +10,9 @@ chai.use(chaiHttp);
 chai.should();
 
 describe('GET APIs', function () {
-    let app
-
-    before(function () {
+    let app = require('../server')
+    
+    before(function (done) {
         app = require('../server')
 
         let val1 = 'this is a sample string'
@@ -29,9 +29,10 @@ describe('GET APIs', function () {
         chai.request(app)
             .post(`/store/${val3}`)
             .end((err, res) => {
+                done()
             })
     })
-
+    
     after(function () {
         chai.request(app)
             .delete('/store/all')
@@ -41,7 +42,6 @@ describe('GET APIs', function () {
     })
 
     it("/store", (done) => {
-        
         chai.request(app)
             .get('/store')
             .end((err, res) => {
