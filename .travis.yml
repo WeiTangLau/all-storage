@@ -8,7 +8,7 @@ script:
 - npm test
 deploy:
   provider: gae
-  keyfile: all-storage-290814-7d526378603c.json.enc
+  keyfile: all-storage-290814-7d526378603c.json
   project: all-storage-290814
 before_install:
 - openssl aes-256-cbc -K $encrypted_15086ecf7501_key -iv $encrypted_15086ecf7501_iv
